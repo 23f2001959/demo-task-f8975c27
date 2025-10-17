@@ -1,100 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tic Tac Toe Game</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Game</title>
 </head>
 <body>
-<div id="tic-tac-toe">
-  <h1>Tic Tac Toe Game</h1>
-  <div class="row">
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-  </div>
-  <div class="row">
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-  </div>
-  <div class="row">
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-    <div class="cell" data-cell></div>
-  </div>
-  <button id="restart-btn">Restart Game</button>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-  const cells = document.querySelectorAll('[data-cell]');
-  const restartButton = document.getElementById('restart-btn');
-  const X_CLASS = 'fas fa-times';
-  const CIRCLE_CLASS = 'far fa-circle';
-  let circleTurn;
+    <h1>Tic Tac Toe Game</h1>
+    
+    <div id="game-board">
+        <div class="row">
+            <div class="cell" id="cell-1"></div>
+            <div class="cell" id="cell-2"></div>
+            <div class="cell" id="cell-3"></div>
+        </div>
+        <div class="row">
+            <div class="cell" id="cell-4"></div>
+            <div class="cell" id="cell-5"></div>
+            <div class="cell" id="cell-6"></div>
+        </div>
+        <div class="row">
+            <div class="cell" id="cell-7"></div>
+            <div class="cell" id="cell-8"></div>
+            <div class="cell" id="cell-9"></div>
+        </div>
+    </div>
 
-  startGame();
-
-  restartButton.addEventListener('click', startGame);
-
-  function startGame() {
-    circleTurn = false;
-    cells.forEach(cell => {
-      cell.classList.remove(X_CLASS);
-      cell.classList.remove(CIRCLE_CLASS);
-      cell.removeEventListener('click', handleClick);
-      cell.addEventListener('click', handleClick, { once: true });
-    });
-  }
-
-  function handleClick(event) {
-    const cell = event.target;
-    const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
-    placeMark(cell, currentClass);
-    if (checkWin(currentClass)) {
-      alert(`${circleTurn ? "Circle" : "X"} wins!`);
-      startGame();
-    } else if (isDraw()) {
-      alert('It\'s a draw!');
-      startGame();
-    } else {
-      swapTurns();
-    }
-  }
-
-  function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass);
-  }
-
-  function swapTurns() {
-    circleTurn = !circleTurn;
-  }
-
-  function checkWin(currentClass) {
-    return winningArrays.some(combination => {
-      return combination.every(index => {
-        return cells[index].classList.contains(currentClass);
-      });
-    });
-  }
-
-function isDraw() {
-    return [...cells].every(cell => {
-      return cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS);
-    });
-}
-
-const winningArrays = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let currentPlayer = 'X';
+            
+            $('.cell').click(function() {
+                if ($(this).text() === '') {
+                    $(this).text(currentPlayer);
+                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
