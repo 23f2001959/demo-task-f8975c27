@@ -1,29 +1,25 @@
 # Tic Tac Toe Game
 
-This project is a simple tic tac toe game created using HTML, CSS, and JavaScript. It is a fun and interactive way to pass the time and challenge your friends to a game of tic tac toe.
+This is a simple Tic Tac Toe game created using HTML, CSS, and JavaScript. It is a fun project to practice your coding skills and challenge your friends to a game of Tic Tac Toe.
 
 ## Setup
 
-To setup the game on your local machine, simply clone the repository to your computer:
+To set up the game, simply clone this repository to your local machine:
 
 ```
-git clone https://github.com/yourusername/demo-task.git
+git clone https://github.com/your-username/demo-task.git
 ```
 
-Once the repository is cloned, you can open the `index.html` file in your browser to start playing the tic tac toe game.
+Then, open the `index.html` file in your browser to start playing the game.
 
 ## Usage
 
-To play the tic tac toe game, simply click on a square on the board to place your X or O. The first player to get three in a row - vertically, horizontally, or diagonally - wins the game. You can also restart the game at any time by clicking the "Restart Game" button.
+To play the game, simply click on an empty square to place your X or O. The objective of the game is to get three of your symbols in a row, either vertically, horizontally, or diagonally. The game will automatically detect if a player has won and will display a message at the top of the board.
 
 ## Code Explanation
 
-The code for this tic tac toe game is written in HTML, CSS, and JavaScript. The HTML file (`index.html`) contains the structure of the game board and buttons. The CSS file (`style.css`) styles the game board and buttons to make them visually appealing. The JavaScript file (`script.js`) contains the logic for the game, including determining the winner and handling player turns.
+The game logic is implemented in the `script.js` file. The board is represented as a 3x3 grid in an array, with each cell containing a value of either 'X', 'O', or null. The code handles player turns, checking for a winner, and updating the board accordingly.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-
----
-
-Feel free to contribute to this project by adding new features or fixing any issues. Happy gaming!
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
